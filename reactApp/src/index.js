@@ -4,6 +4,9 @@ import { BrowserRouter, Route, Routes, Navigate, Link } from "react-router-dom";
 import PublicPage from "./pages/publicPage";
 import ProfilePage from "./pages/profilePage";
 import MoviesPage from "./pages/moviesPage";
+import PopularMoviesPage from "./pages/popularMoviesPage"; 
+import UpcomingMoviesPage from "./pages/upcomingMoviesPage"; 
+import TrendingMoviesPage from "./pages/trendingMoviesPage"; 
 import { QueryClientProvider, QueryClient } from "react-query";
 import LoginPage from "./pages/loginPage";
 import AuthContextProvider from "./contexts/authContext";
@@ -11,6 +14,7 @@ import SignUpPage from "./pages/signUpPage";
 import ProtectedRoutes from "./protectedRoutes";
 import Header from "./components/siteHeader";
 import signUpPage from "./pages/signUpPage";
+
 
 
 const queryClient = new QueryClient({
@@ -39,6 +43,15 @@ const App = () => {
             <li>
               <Link to="/profile">Profile</Link>
             </li>
+            <li>
+              <Link to="/popular">Popular Movies</Link>
+            </li>
+            <li>
+              <Link to="/upcoming">Upcoming Movies</Link>
+            </li>
+            <li>
+              <Link to="/trending">Trending Movies</Link>
+            </li>
           </ul>
           <Routes>
             <Route path="/" element={<PublicPage />} />
@@ -47,6 +60,9 @@ const App = () => {
             <Route element={<ProtectedRoutes />}>
               <Route path="/movies" element={<MoviesPage />} />
               <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/popular" element={<PopularMoviesPage />} /> 
+              <Route path="/upcoming" element={<UpcomingMoviesPage />} /> 
+              <Route path="/trending" element={<TrendingMoviesPage />} /> 
             </Route>
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/signup" element={ <SignUpPage /> } />
